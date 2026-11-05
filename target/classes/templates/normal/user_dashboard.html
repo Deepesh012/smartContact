@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="normal/base2::Layout(~{::div})">
+
+<head>
+  <title>User Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div>
+
+  <h1 class="text-center">Smart Contact Manager</h1>
+
+  <!-- Cards -->
+  <div class="container mt-4">
+    <h3>Dashboard Overview</h3>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <div class="card text-white bg-primary h-100 dashboard-card">
+          <div class="card-body">
+            <h5 class="card-title">Total User</h5>
+            <p class="card-text" th:text="${totalUsers}">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card text-white bg-success h-100 dashboard-card">
+          <div class="card-body">
+            <h5 class="card-title">
+  Total Contacts (<span style=" font-size: 0.8rem; font-weight: normal;" th:text="${user.name}"></span>)
+</h5>
+            <p class="card-text" th:text="${totalContacts}">0</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card text-white bg-warning h-100 dashboard-card">
+          <div class="card-body">
+            <h5 class="card-title">All Contacts</h5>
+            <p th:text="${totalContactCount + ' total'}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie Chart -->
+  <div class="container mt-3">
+    <h3 class="text-center">Contact Categories</h3>
+    <div class="chart-container">
+  <canvas id="myPieChart"></canvas>
+</div>
+  </div>
+
+  <script th:inline="javascript">
+    const totalUsers = [[${totalUsers}]];
+    const totalContacts = [[${totalContacts}]];
+    const allContacts = [[${totalContactCount}]];
+
+    const ctx = document.getElementById('myPieChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Total Users', 'Your Contacts', 'All Contacts'],
+        datasets: [{
+          data: [totalUsers, totalContacts, allContacts],
+          backgroundColor: ['#36a2eb', '#4bc0c0', '#ffce56'],
+          borderColor: '#ffffff',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  </script>
+
+</div>
+
+</body>
+</html>

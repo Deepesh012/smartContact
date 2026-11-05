@@ -1,0 +1,15 @@
+com\smartcontactmanager\app\email\controller\EmailController.class
+com\smartcontactmanager\app\config\CustomUserDetails.class
+com\smartcontactmanager\app\email\service\EmailService.class
+com\smartcontactmanager\app\SmartcontactmanagerApplication.class
+com\smartcontactmanager\app\config\MyConfg.class
+com\smartcontactmanager\app\controller\UserController.class
+com\smartcontactmanager\app\dao\UserRepository.class
+com\smartcontactmanager\app\config\UserDetailsServiceImpl.class
+com\smartcontactmanager\app\email\model\EmailRequest.class
+com\smartcontactmanager\app\controller\HomeController.class
+com\smartcontactmanager\app\dao\ContactRepository.class
+com\smartcontactmanager\app\entities\User.class
+com\smartcontactmanager\app\entities\Contact.class
+com\smartcontactmanager\app\email\service\EmailService$1.class
+com\smartcontactmanager\app\helper\Message.class

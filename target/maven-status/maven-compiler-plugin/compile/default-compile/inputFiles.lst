@@ -1,0 +1,14 @@
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\config\CustomUserDetails.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\config\MyConfg.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\config\UserDetailsServiceImpl.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\controller\HomeController.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\controller\UserController.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\dao\ContactRepository.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\dao\UserRepository.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\email\controller\EmailController.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\email\model\EmailRequest.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\email\service\EmailService.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\entities\Contact.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\entities\User.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\helper\Message.java
+D:\Spring_Projects\smart\src\main\java\com\smartcontactmanager\app\SmartcontactmanagerApplication.java
