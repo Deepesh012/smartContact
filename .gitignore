@@ -31,3 +31,19 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Eclipse / STS workspace
+.metadata/
+.settings/
+.classpath
+.project
+
+# Crash logs
+hs_err_pid*.log
+
+# Maven
+target/
+
+# Secrets
+.env
+db_password.txt
