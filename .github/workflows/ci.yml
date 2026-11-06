@@ -18,7 +18,7 @@ jobs:
                 env:
                     POSTGRES_DB: smartcontact
                     POSTGRES_USER: postgres
-                    POSTGRES_PASSWORD: YOUR_NEW_DB_PASSWORD
+                    POSTGRES_PASSWORD: postgres
                 ports:
                     - "5432:5432"
                 options: >-
@@ -40,5 +40,5 @@ jobs:
               env: 
                 TEST_DB_URL: jdbc:postgresql://localhost:5432/smartcontact
                 TEST_DB_USERNAME: postgres
-                TEST_DB_PASSWORD: YOUR_NEW_DB_PASSWORD
+                TEST_DB_PASSWORD: postgres
               run: mvn clean package
