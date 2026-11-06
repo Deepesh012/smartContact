@@ -1,4 +1,4 @@
-name: SmartContact CI
+name: SmartContact CI Workflow
 
 on:
     push:
