@@ -12,6 +12,21 @@ jobs:
     build:
         runs-on: ubuntu-latest
         
+        services:
+            postgres:
+                image: postgres:17
+                env:
+                    POSTGRES_DB: smartcontact
+                    POSTGRES_USER: postgres
+                    POSTGRES_PASSWORD: YOUR_NEW_DB_PASSWORD
+                ports:
+                    - "5432:5432"
+                options: >-
+                    --health-cmd "pg_isready -U postgres -d smartcontact"
+                    --health-interval 10s
+                    --health-timeout 5s
+                    --health-retries 5
+        
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -21,5 +36,9 @@ jobs:
                 java-version: '17'
                 distribution: 'temurin'
                 cache: maven
-            - name: Build Application
-              run: mvn clean package -DskipTests
+            - name: Run Test and Build Application
+              env: 
+                TEST_DB_URL: jdbc:postgresql://localhost:5432/smartcontact
+                TEST_DB_USERNAME: postgres
+                TEST_DB_PASSWORD: YOUR_NEW_DB_PASSWORD
+              run: mvn clean package
