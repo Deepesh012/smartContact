@@ -56,14 +56,38 @@ jobs:
               run: docker build -t ghcr.io/deepesh012/smartcontact:latest .
             - name: Push Docker Image to ghcr
               run: docker push ghcr.io/deepesh012/smartcontact:latest
-            - name: Test EC2 SSH Connection
+            - name: Deploy to EC2
               uses: appleboy/ssh-action@v1.2.0
               with:
                 host: ${{ secrets.EC2_HOST }}
                 username: ${{ secrets.EC2_USER }}
                 key: ${{ secrets.EC2_SSH_KEY }}
-                script:
-                    echo "Connected to EC2"
-                    hostname
-                    docker --version
-                    docker ps
+                script: |
+                    set -e
+                    
+                    echo "Pulling latest Docker Image"
+                    docker pull ghcr.io/deepesh012/smartcontact:latest
+                    
+                    echo "Stopping Old Application"
+                    docker stop smartcontact-app || true
+                    
+                    echo "Removing Old Application"
+                    docker rm smartcontact-app || true
+                    
+                    echo "Starting new Application"
+                    docker run -d \
+                        --name smartcontact-app \
+                        --network smartcontact-network \
+                        -p 8000:8289 \
+                        ghcr.io/deepesh012/smartcontact:latest
+                        
+                    echo "Waiting for Application"
+                    sleep 20
+                    
+                    echo "Checking Containers"
+                    docker ps --filter "name=smartcontact-app"
+                    
+                    echo "Checking Application Health"
+                    curl -f http://localhost:8289/actuator/health
+                    
+                    echo "Deployment Completed Successfully"
